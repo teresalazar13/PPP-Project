@@ -29,3 +29,13 @@ typedef struct node2 {
   struct Viagem viagem;
   list_viagens next;
 }list_node2;
+
+void menu();
+list_clientes create_list_clientes();
+list_viagens create_list_viagens();
+void inserir_cliente(list_clientes linked_list);
+struct Cliente inserir_dados_cliente();
+void inserir_viagem(list_viagens linked_list);
+struct Viagem inserir_dados_viagem();
+void print_list_clientes(list_clientes pointer);
+void print_list_viagens(list_viagens pointer);
