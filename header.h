@@ -1,11 +1,11 @@
 typedef struct node *list_clientes;
-typedef struct node *list_viagens;
+typedef struct node2 *list_viagens;
 
 struct Cliente {
   char *nome;
   int numero;
-  list_viagens viagens_adquiridas;
-  list_viagens viagens_espera;
+  list_viagens viagens_adquiridas; //???
+  list_viagens viagens_espera;  //???
 };
 
 struct Data {
@@ -15,6 +15,7 @@ struct Data {
 struct Viagem {
   char *destino;
   struct Data data;
+  int soma_data;
   list_clientes clientes;
   list_clientes clientes_espera;
 };
