@@ -10,6 +10,10 @@ void inserir_cliente(list_clientes linked_list);
 struct Cliente inserir_dados_cliente();
 void inserir_viagem(list_viagens linked_list);
 struct Viagem inserir_dados_viagem();
+void print_list_clientes(list_clientes pointer);
+void print_list_viagens(list_viagens pointer);
+
+//To do --> dar para por espaços
 
 int main(int argc, char const *argv[]) {
   menu();
@@ -20,10 +24,12 @@ void menu() {
   list_clientes linked_list_clientes;
   linked_list_clientes = create_list_clientes();
   inserir_cliente(linked_list_clientes);
+  print_list_clientes(linked_list_clientes);
 
   list_viagens linked_list_viagens;
   linked_list_viagens = create_list_viagens();
   inserir_viagem(linked_list_viagens);
+  print_list_viagens(linked_list_viagens);
 
   int opcao;
   while (1) {
@@ -139,4 +145,31 @@ struct Viagem inserir_dados_viagem() {
   soma_data = ano * 10000 + mes * 100 + dia;
   novaViagem.soma_data = soma_data;
   return novaViagem;
+}
+
+void print_list_clientes(list_clientes pointer) {
+  list_clientes aux;
+  aux = pointer->next;
+  while (aux != NULL) {
+    printf("Nome: ");
+    printf("%s \n",aux->cliente.nome);
+    printf("Numero: ");
+    printf("%d \n",aux->cliente.numero);
+    aux = aux->next;
+  }
+}
+
+void print_list_viagens(list_viagens pointer) {
+  list_viagens aux;
+  aux = pointer->next;
+  while (aux != NULL) {
+    printf("Destino: ");
+    printf("%s \n",aux->viagem.destino);
+    printf("Data: ");
+    printf("%d/%d/%d \n",aux->viagem.data.dia, aux->viagem.data.mes, aux->viagem.data.ano );
+    printf("Soma Data: ");
+    printf("%d \n",aux->viagem.soma_data);
+    printf("\n");
+    aux = aux->next;
+  }
 }
