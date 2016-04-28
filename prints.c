@@ -15,17 +15,19 @@ void print_list_clientes(list_clientes pointer) {
   }
 }
 
-void print_list_viagens(list_viagens pointer) {
+void print_list_viagens(list_viagens pointer, char *destino) {
   list_viagens aux;
   aux = pointer->next;
   while (aux != NULL) {
-    printf("Destino: ");
-    printf("%s \n",aux->viagem.destino);
-    printf("Data: ");
-    printf("%d/%d/%d \n",aux->viagem.data.dia, aux->viagem.data.mes, aux->viagem.data.ano );
-    printf("Soma Data: ");
-    printf("%d \n",aux->viagem.soma_data);
-    printf("\n");
+    if (strcmp(aux->viagem.destino,destino) == 0) {
+      printf("Destino: ");
+      printf("%s \n",aux->viagem.destino);
+      printf("Data: ");
+      printf("%d/%d/%d \n",aux->viagem.data.dia, aux->viagem.data.mes, aux->viagem.data.ano );
+      printf("Soma Data: ");
+      printf("%d \n",aux->viagem.soma_data);
+      printf("\n");
+    }
     aux = aux->next;
   }
 }

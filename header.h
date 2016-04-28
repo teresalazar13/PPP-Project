@@ -40,4 +40,4 @@ struct Cliente inserir_dados_cliente();
 void inserir_viagem(list_viagens linked_list);
 struct Viagem inserir_dados_viagem();
 void print_list_clientes(list_clientes pointer);
-void print_list_viagens(list_viagens pointer);
+void print_list_viagens(list_viagens pointer, char *destino);
