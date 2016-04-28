@@ -1,11 +1,13 @@
+#define MAX 2
+
 typedef struct node *list_clientes;
 typedef struct node2 *list_viagens;
 
 struct Cliente {
   char *nome;
   int numero;
-  list_viagens viagens_adquiridas; //???
-  list_viagens viagens_espera;  //???
+  list_viagens viagens_adquiridas;
+  list_viagens viagens_espera;
 };
 
 struct Data {

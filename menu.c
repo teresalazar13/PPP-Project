@@ -7,11 +7,9 @@ void menu() {
   list_clientes linked_list_clientes;
   linked_list_clientes = create_list_clientes();
   inserir_cliente(linked_list_clientes);
-  print_list_clientes(linked_list_clientes);
   list_viagens linked_list_viagens;
   linked_list_viagens = create_list_viagens();
   inserir_viagem(linked_list_viagens);
-  print_list_viagens(linked_list_viagens);
   int opcao;
   while (1) {
     printf("Pretende: \n");
@@ -33,13 +31,14 @@ void menu() {
 
     }
     else if (opcao == 4) {
-
+      //To do perguntar qual e o destino
+      print_list_viagens(linked_list_viagens);
     }
     else if (opcao == 5) {
 
     }
     else if (opcao == 6) {
-
+      print_list_clientes(linked_list_clientes);
     }
     else if (opcao == -1) {
       break;
