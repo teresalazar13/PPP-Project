@@ -33,6 +33,7 @@ void menu() {
       destino = (char*) malloc(20 * sizeof(char));
       printf("Destino: ");
       scanf("%s", destino );
+      sort_data(linked_list_viagens);
       print_list_viagens(linked_list_viagens, destino);
     }
     else if (opcao == 5) {

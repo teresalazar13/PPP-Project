@@ -19,7 +19,7 @@ void print_list_viagens(list_viagens pointer, char *destino) {
   list_viagens aux;
   aux = pointer->next;
   while (aux != NULL) {
-    if (strcmp(aux->viagem.destino,destino) == 0) {
+    if (strcmp(aux->viagem.destino, destino) == 0) {
       printf("Destino: ");
       printf("%s \n",aux->viagem.destino);
       printf("Data: ");
