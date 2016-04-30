@@ -45,6 +45,7 @@ struct Cliente inserir_dados_cliente() {
   printf("Numero: ");
   scanf("%d",&numero );
   novoCliente.numero = numero;
+  novoCliente.viagens_adquiridas = create_list_viagens();
   return novoCliente;
 }
 

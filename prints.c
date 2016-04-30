@@ -31,3 +31,20 @@ void print_list_viagens(list_viagens pointer, char *destino) {
     aux = aux->next;
   }
 }
+
+void print_viagens_adquiridas(list_clientes linked_list_clientes) {
+  struct Cliente *cliente = procura_cliente(linked_list_clientes);
+  list_viagens pointer = cliente->viagens_adquiridas;
+  list_viagens aux;
+  aux = pointer->next;
+  while (aux != NULL) {
+    printf("Destino: ");
+    printf("%s \n",aux->viagem.destino);
+    printf("Data: ");
+    printf("%d/%d/%d \n",aux->viagem.data.dia, aux->viagem.data.mes, aux->viagem.data.ano );
+    printf("Soma Data: ");
+    printf("%d \n",aux->viagem.soma_data);
+    printf("\n");
+    aux = aux->next;
+  }
+}

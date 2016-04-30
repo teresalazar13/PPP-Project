@@ -5,13 +5,7 @@
 
 void adquirir_viagem(list_viagens linked_list_viagens, list_clientes linked_list_clientes) {
   struct Cliente *cliente = procura_cliente(linked_list_clientes);
-  cliente->nome = "Zeferina";
-  printf("Lista modificada: \n");
-  print_list_clientes(linked_list_clientes);
-  /*
-  list_viagens viagens_adquiridas_cliente;
-  viagens_adquiridas_cliente = aux->cliente.viagens_adquiridas;
-  inserir_viagem_em_cliente(viagens_adquiridas_cliente); */
+  inserir_viagem_em_cliente(&cliente->viagens_adquiridas); //recebe a lista de viagens adquiridas do cliente
 }
 
 struct Cliente *procura_cliente(list_clientes linked_list_clientes) {
@@ -26,11 +20,21 @@ struct Cliente *procura_cliente(list_clientes linked_list_clientes) {
   aux = linked_list_clientes;
   while (aux->next != NULL && strcmp(nome, aux->next->cliente.nome) != 0) {
     aux = aux->next;
-    printf("Nome do cliente: %s\n",aux->cliente.nome );
-    printf("Nao e este cliente\n");
   }
-  printf("E este cliente\n");
   aux = aux->next;
-  printf("%s\n",aux->cliente.nome );
+  printf("Cliente: %s\n",aux->cliente.nome );
   return &aux->cliente;
+}
+
+void inserir_viagem_em_cliente(list_viagens *linked_list) {
+  struct Viagem novaViagem = inserir_dados_viagem();
+  list_viagens aux;
+  aux = *linked_list;
+  while (aux->next != NULL) {
+    aux = aux->next;
+  }
+  aux->next = (list_viagens) malloc(sizeof(list_node2));
+  aux = aux->next;
+  aux->viagem = novaViagem;
+  aux->next = NULL;
 }

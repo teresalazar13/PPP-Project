@@ -37,7 +37,7 @@ void menu() {
       print_list_viagens(linked_list_viagens, destino);
     }
     else if (opcao == 5) {
-
+      print_viagens_adquiridas(linked_list_clientes);
     }
     else if (opcao == 6) {
       print_list_clientes(linked_list_clientes);
