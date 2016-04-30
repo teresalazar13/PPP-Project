@@ -11,7 +11,7 @@ void sort_data(list_viagens a) {
   aux2 = aux->next;
   while(aux->next!=NULL) {
     while(aux2 != NULL) {
-      if (aux->viagem.soma_data > aux2->viagem.soma_data) {
+      if (aux->viagem.soma_data < aux2->viagem.soma_data) {
         temp = aux->viagem;
         aux->viagem = aux2->viagem;
         aux2->viagem = temp;
