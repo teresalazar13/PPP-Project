@@ -43,3 +43,4 @@ void print_list_clientes(list_clientes pointer);
 void print_list_viagens(list_viagens pointer, char *destino);
 void sort_data(list_viagens a);
 void adquirir_viagem(list_viagens linked_list_viagens, list_clientes linked_list_clientes);
+struct Cliente *procura_cliente(list_clientes linked_list_clientes);

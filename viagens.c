@@ -4,6 +4,17 @@
 #include "header.h"
 
 void adquirir_viagem(list_viagens linked_list_viagens, list_clientes linked_list_clientes) {
+  struct Cliente *cliente = procura_cliente(linked_list_clientes);
+  cliente->nome = "Zeferina";
+  printf("Lista modificada: \n");
+  print_list_clientes(linked_list_clientes);
+  /*
+  list_viagens viagens_adquiridas_cliente;
+  viagens_adquiridas_cliente = aux->cliente.viagens_adquiridas;
+  inserir_viagem_em_cliente(viagens_adquiridas_cliente); */
+}
+
+struct Cliente *procura_cliente(list_clientes linked_list_clientes) {
   char *nome;
   int numero;
   nome = (char*) malloc(20*sizeof(char));
@@ -21,7 +32,5 @@ void adquirir_viagem(list_viagens linked_list_viagens, list_clientes linked_list
   printf("E este cliente\n");
   aux = aux->next;
   printf("%s\n",aux->cliente.nome );
-  list_viagens viagens_adquiridas_cliente;
-  viagens_adquiridas_cliente = aux->cliente.viagens_adquiridas;
-  //inserir_viagem_em_cliente(viagens_adquiridas_cliente);
+  return &aux->cliente;
 }
