@@ -22,3 +22,23 @@ void sort_data(list_viagens a) {
     aux2 = aux->next;
   }
 }
+
+void sort_data_recente_primeiro(list_viagens a) {
+  int n = 0;
+  struct Viagem temp;
+  list_viagens aux, aux2;
+  aux = a->next;
+  aux2 = aux->next;
+  while(aux->next!=NULL) {
+    while(aux2 != NULL) {
+      if (aux->viagem.soma_data > aux2->viagem.soma_data) {
+        temp = aux->viagem;
+        aux->viagem = aux2->viagem;
+        aux2->viagem = temp;
+      }
+      aux2 = aux2->next;
+    }
+    aux = aux->next;
+    aux2 = aux->next;
+  }
+}

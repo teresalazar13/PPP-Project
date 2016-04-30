@@ -34,6 +34,7 @@ void print_list_viagens(list_viagens pointer, char *destino) {
 
 void print_viagens_adquiridas(list_clientes linked_list_clientes) {
   struct Cliente *cliente = procura_cliente(linked_list_clientes);
+  sort_data_recente_primeiro(cliente->viagens_adquiridas);
   list_viagens pointer = cliente->viagens_adquiridas;
   list_viagens aux;
   aux = pointer->next;
