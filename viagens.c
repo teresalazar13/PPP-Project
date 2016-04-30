@@ -5,7 +5,7 @@
 
 void adquirir_viagem(list_viagens linked_list_viagens, list_clientes linked_list_clientes) {
   struct Cliente *cliente = procura_cliente(linked_list_clientes);
-  inserir_viagem_em_cliente(&cliente->viagens_adquiridas); //recebe a lista de viagens adquiridas do cliente
+  inserir_viagem_em_cliente(&cliente->viagens_adquiridas, linked_list_viagens); //recebe a lista de viagens adquiridas do cliente
 }
 
 struct Cliente *procura_cliente(list_clientes linked_list_clientes) {
@@ -18,7 +18,7 @@ struct Cliente *procura_cliente(list_clientes linked_list_clientes) {
   scanf("%d", &numero );
   list_clientes aux;
   aux = linked_list_clientes;
-  while (aux->next != NULL && strcmp(nome, aux->next->cliente.nome) != 0) {
+  while (aux->next != NULL && strcmp(nome, aux->next->cliente.nome) != 0 && aux->next->cliente.numero != numero) {
     aux = aux->next;
   }
   aux = aux->next;
@@ -26,8 +26,8 @@ struct Cliente *procura_cliente(list_clientes linked_list_clientes) {
   return &aux->cliente;
 }
 
-void inserir_viagem_em_cliente(list_viagens *linked_list) {
-  struct Viagem novaViagem = inserir_dados_viagem();
+void inserir_viagem_em_cliente(list_viagens *linked_list, list_viagens linked_list_viagens) {
+  struct Viagem novaViagem = escolhe_viagem(linked_list_viagens);
   list_viagens aux;
   aux = *linked_list;
   while (aux->next != NULL) {
