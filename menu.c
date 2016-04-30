@@ -20,7 +20,7 @@ void menu() {
     printf("[-1 para sair] \n");
     scanf("%d",&opcao);
     if (opcao == 1) {
-
+      adquirir_viagem(linked_list_viagens, linked_list_clientes);
     }
     else if (opcao == 2) {
 
