@@ -15,31 +15,6 @@ void print_list_clientes(list_clientes pointer) {
   }
 }
 
-struct Viagem escolhe_viagem(list_viagens pointer) {
-  list_viagens aux;
-  aux = pointer->next;
-  int i = 1;
-  while (aux != NULL) {
-    printf("Viagem %d\n", i );
-    printf("Destino: ");
-    printf("%s \n",aux->viagem.destino);
-    printf("Data: ");
-    printf("%d/%d/%d \n",aux->viagem.data.dia, aux->viagem.data.mes, aux->viagem.data.ano );
-    aux = aux->next;
-    i++;
-  }
-  int opcao;
-  printf("Numero da viagem que pretende: ");
-  scanf("%d",&opcao );
-  aux = pointer->next;
-  i = 1;
-  while (aux != NULL && i != opcao ) {
-    aux = aux->next;
-    i++;
-  }
-  return aux->viagem;
-}
-
 void print_list_viagens(list_viagens pointer, char *destino) {
   list_viagens aux;
   aux = pointer->next;
