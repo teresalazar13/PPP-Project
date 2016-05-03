@@ -48,6 +48,10 @@ void menu() {
     else if (opcao == 8) {
       inserir_viagem(linked_list_viagens);
     }
+    else if (opcao == 9) {
+      struct Viagem teste = escolhe_viagem(linked_list_viagens);
+      print_list_clientes(teste.clientes);
+    }
     else if (opcao == -1) {
       break;
     }
