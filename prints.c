@@ -24,8 +24,6 @@ void print_list_viagens(list_viagens pointer, char *destino) {
       printf("%s \n",aux->viagem.destino);
       printf("Data: ");
       printf("%d/%d/%d \n",aux->viagem.data.dia, aux->viagem.data.mes, aux->viagem.data.ano );
-      printf("Soma Data: ");
-      printf("%d \n",aux->viagem.soma_data);
       printf("\n");
     }
     aux = aux->next;

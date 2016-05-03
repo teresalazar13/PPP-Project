@@ -46,6 +46,7 @@ struct Cliente inserir_dados_cliente() {
   scanf("%d",&numero );
   novoCliente.numero = numero;
   novoCliente.viagens_adquiridas = create_list_viagens();
+  novoCliente.viagens_espera = create_list_viagens();
   return novoCliente;
 }
 
@@ -79,5 +80,7 @@ struct Viagem inserir_dados_viagem() {
   novaViagem.data = data;
   soma_data = ano * 10000 + mes * 100 + dia;
   novaViagem.soma_data = soma_data;
+  novaViagem.clientes = create_list_clientes();
+  novaViagem.clientes_espera = create_list_clientes();
   return novaViagem;
 }

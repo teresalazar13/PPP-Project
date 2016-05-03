@@ -8,7 +8,7 @@ void adquirir_viagem(list_viagens linked_list_viagens, list_clientes linked_list
   if (cliente == 0) {
     printf("Cliente nao encontrado.\n");
     return;
-  }
+  } 
   inserir_viagem_em_cliente(&cliente->viagens_adquiridas, linked_list_viagens); //recebe a lista de viagens adquiridas do cliente
 }
 
