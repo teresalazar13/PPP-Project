@@ -37,8 +37,8 @@ void inserir_cliente(list_clientes linked_list) {
 struct Cliente inserir_dados_cliente() {
   int numero;
   struct Cliente novoCliente;
-  novoCliente.nome = malloc(20 * sizeof(char));
-  char nome[20];
+  novoCliente.nome = malloc((MAX_CHAR + 1) * sizeof(char));
+  char nome[MAX_CHAR + 1];
   printf("Nome: ");
   scanf("%s", nome);
   strcpy(novoCliente.nome, nome);
@@ -46,7 +46,6 @@ struct Cliente inserir_dados_cliente() {
   scanf("%d",&numero );
   novoCliente.numero = numero;
   novoCliente.viagens_adquiridas = create_list_viagens();
-  novoCliente.viagens_espera = create_list_viagens();
   return novoCliente;
 }
 
@@ -65,8 +64,8 @@ void inserir_viagem(list_viagens linked_list) {
 
 struct Viagem inserir_dados_viagem() {
   struct Viagem novaViagem;
-  novaViagem.destino = malloc(20 * sizeof(char));
-  char destino[20];
+  novaViagem.destino = malloc((MAX_CHAR + 1) * sizeof(char));
+  char destino[MAX_CHAR + 1];
   struct Data data;
   int dia, mes, ano, soma_data, numero_maximo;
   printf("Destino: ");
@@ -84,5 +83,6 @@ struct Viagem inserir_dados_viagem() {
   scanf("%d",&numero_maximo );
   novaViagem.numero_maximo_de_clientes = numero_maximo;
   novaViagem.numero_de_clientes = 0;
+  novaViagem.clientes_espera = create_list_clientes();
   return novaViagem;
 }

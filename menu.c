@@ -30,7 +30,7 @@ void menu() {
     }
     else if (opcao == 4) {
       char *destino;
-      destino = (char*) malloc(20 * sizeof(char));
+      destino = (char*) malloc((MAX_CHAR + 1) * sizeof(char));
       printf("Destino: ");
       scanf("%s", destino );
       sort_data(linked_list_viagens);
@@ -47,6 +47,14 @@ void menu() {
     }
     else if (opcao == 8) {
       inserir_viagem(linked_list_viagens);
+    }
+    else if (opcao == 9) {
+      //printa clientes em espera para uma viagem
+      struct Viagem *viagem = escolhe_viagem(linked_list_viagens);
+      print_list_clientes(viagem->clientes_espera);
+    }
+    else if (opcao == 10) {
+      print_list_todas_viagens(linked_list_viagens);
     }
     else if (opcao == -1) {
       break;
