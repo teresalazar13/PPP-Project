@@ -47,4 +47,4 @@ struct Cliente *procura_cliente(list_clientes linked_list_clientes);
 void inserir_viagem_em_cliente(list_viagens *linked_list, list_viagens linked_list_viagens);
 void print_viagens_adquiridas(list_clientes linked_list_clientes);
 void sort_data_recente_primeiro(list_viagens a);
-struct Viagem escolhe_viagem(list_viagens pointer);
+struct Viagem *escolhe_viagem(list_viagens pointer);

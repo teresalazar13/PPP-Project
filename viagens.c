@@ -35,19 +35,25 @@ struct Cliente *procura_cliente(list_clientes linked_list_clientes) {
 }
 
 void inserir_viagem_em_cliente(list_viagens *linked_list, list_viagens linked_list_viagens) {
-  struct Viagem novaViagem = escolhe_viagem(linked_list_viagens);
-  list_viagens aux;
-  aux = *linked_list;
-  while (aux->next != NULL) {
-    aux = aux->next;
+  struct Viagem *novaViagem = escolhe_viagem(linked_list_viagens);
+  if (novaViagem->numero_de_clientes == novaViagem->numero_maximo_de_clientes) {
+    printf("Viagem cheia. Sera colocado em lista de espera.\n");
   }
-  aux->next = (list_viagens) malloc(sizeof(list_node2));
-  aux = aux->next;
-  aux->viagem = novaViagem;
-  aux->next = NULL;
+  else {
+    novaViagem->numero_de_clientes++; //incrementar o numero de clientes da viagem
+    list_viagens aux;
+    aux = *linked_list;
+    while (aux->next != NULL) {
+      aux = aux->next;
+    }
+    aux->next = (list_viagens) malloc(sizeof(list_node2));
+    aux = aux->next;
+    aux->viagem = *novaViagem;
+    aux->next = NULL;
+  }
 }
 
-struct Viagem escolhe_viagem(list_viagens pointer) {
+struct Viagem *escolhe_viagem(list_viagens pointer) {
   list_viagens aux;
   aux = pointer->next;
   int i = 1;
@@ -69,7 +75,7 @@ struct Viagem escolhe_viagem(list_viagens pointer) {
     aux = aux->next;
     i++;
   }
-  return aux->viagem;
+  return &aux->viagem;
 }
 
 int conta_numero_de_clientes(list_clientes pointer) {
