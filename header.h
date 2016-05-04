@@ -18,8 +18,8 @@ struct Viagem {
   char *destino;
   struct Data data;
   int soma_data;
-  list_clientes clientes;
-  list_clientes clientes_espera;
+  int numero_de_clientes;
+  int numero_maximo_de_clientes;
 };
 
 typedef struct node {

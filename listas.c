@@ -68,7 +68,7 @@ struct Viagem inserir_dados_viagem() {
   novaViagem.destino = malloc(20 * sizeof(char));
   char destino[20];
   struct Data data;
-  int dia, mes, ano, soma_data;
+  int dia, mes, ano, soma_data, numero_maximo;
   printf("Destino: ");
   scanf("%s", destino);
   strcpy(novaViagem.destino, destino);
@@ -80,5 +80,9 @@ struct Viagem inserir_dados_viagem() {
   novaViagem.data = data;
   soma_data = ano * 10000 + mes * 100 + dia;
   novaViagem.soma_data = soma_data;
+  printf("Numero maximo de clientes: ");
+  scanf("%d",&numero_maximo );
+  novaViagem.numero_maximo_de_clientes = numero_maximo;
+  novaViagem.numero_de_clientes = 0;
   return novaViagem;
 }

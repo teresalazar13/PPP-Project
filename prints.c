@@ -24,6 +24,8 @@ void print_list_viagens(list_viagens pointer, char *destino) {
       printf("%s \n",aux->viagem.destino);
       printf("Data: ");
       printf("%d/%d/%d \n",aux->viagem.data.dia, aux->viagem.data.mes, aux->viagem.data.ano );
+      printf("Numero de clientes: %d\n",aux->viagem.numero_de_clientes );
+      printf("Numero maximo de clientes: %d\n", aux->viagem.numero_maximo_de_clientes );
       printf("\n");
     }
     aux = aux->next;
@@ -41,8 +43,6 @@ void print_viagens_adquiridas(list_clientes linked_list_clientes) {
     printf("%s \n",aux->viagem.destino);
     printf("Data: ");
     printf("%d/%d/%d \n",aux->viagem.data.dia, aux->viagem.data.mes, aux->viagem.data.ano );
-    printf("Soma Data: ");
-    printf("%d \n",aux->viagem.soma_data);
     printf("\n");
     aux = aux->next;
   }
