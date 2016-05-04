@@ -9,7 +9,7 @@ void adquirir_viagem(list_viagens linked_list_viagens, list_clientes linked_list
     printf("Cliente nao encontrado.\n");
     return;
   }
-  inserir_viagem_em_cliente(&cliente->viagens_adquiridas, linked_list_viagens, cliente); //recebe a lista de viagens adquiridas do cliente
+  inserir_viagem_em_cliente(&cliente->viagens_adquiridas, linked_list_viagens);
 }
 
 struct Cliente *procura_cliente(list_clientes linked_list_clientes) {
@@ -34,7 +34,7 @@ struct Cliente *procura_cliente(list_clientes linked_list_clientes) {
   return 0;
 }
 
-void inserir_viagem_em_cliente(list_viagens *linked_list, list_viagens linked_list_viagens, struct Cliente *cliente) {
+void inserir_viagem_em_cliente(list_viagens *linked_list, list_viagens linked_list_viagens) {
   struct Viagem novaViagem = escolhe_viagem(linked_list_viagens);
   list_viagens aux;
   aux = *linked_list;
@@ -45,16 +45,6 @@ void inserir_viagem_em_cliente(list_viagens *linked_list, list_viagens linked_li
   aux = aux->next;
   aux->viagem = novaViagem;
   aux->next = NULL;
-
-  list_clientes aux2;
-  aux2 = novaViagem.clientes;
-  while (aux2->next != NULL) {
-    aux2 = aux2->next;
-  }
-  aux2->next = (list_clientes) malloc(sizeof(list_node));
-  aux2 = aux2->next;
-  aux2->cliente = *cliente;
-  aux2->next = NULL;
 }
 
 struct Viagem escolhe_viagem(list_viagens pointer) {
@@ -80,4 +70,15 @@ struct Viagem escolhe_viagem(list_viagens pointer) {
     i++;
   }
   return aux->viagem;
+}
+
+int conta_numero_de_clientes(list_clientes pointer) {
+  int n = 0;
+  list_clientes aux;
+  aux = pointer->next;
+  while(aux !=  NULL) {
+    n++;
+    aux = aux->next;
+  }
+  return n;
 }
