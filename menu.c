@@ -23,7 +23,7 @@ void menu() {
       adquirir_viagem(linked_list_viagens, linked_list_clientes);
     }
     else if (opcao == 2) {
-
+      cancelar_viagem(linked_list_clientes);
     }
     else if (opcao == 3) {
 
@@ -33,7 +33,7 @@ void menu() {
       destino = (char*) malloc((MAX_CHAR + 1) * sizeof(char));
       printf("Destino: ");
       scanf("%s", destino );
-      sort_data(linked_list_viagens);
+      sort_data_antigo_primeiro(linked_list_viagens);
       print_list_viagens(linked_list_viagens, destino);
     }
     else if (opcao == 5) {

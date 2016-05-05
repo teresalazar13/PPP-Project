@@ -3,9 +3,9 @@
 #include <string.h>
 #include "header.h"
 
-void print_list_clientes(list_clientes pointer) {
+void print_list_clientes(list_clientes linked_list_clientes) {
   list_clientes aux;
-  aux = pointer->next;
+  aux = linked_list_clientes->next;
   while (aux != NULL) {
     printf("Nome: ");
     printf("%s \n",aux->cliente.nome);
@@ -15,9 +15,9 @@ void print_list_clientes(list_clientes pointer) {
   }
 }
 
-void print_list_viagens(list_viagens pointer, char *destino) {
+void print_list_viagens(list_viagens linked_list_viagens, char *destino) {
   list_viagens aux;
-  aux = pointer->next;
+  aux = linked_list_viagens->next;
   while (aux != NULL) {
     if (strcmp(aux->viagem.destino, destino) == 0) {
       printf("Destino: ");
@@ -31,9 +31,9 @@ void print_list_viagens(list_viagens pointer, char *destino) {
   }
 }
 
-void print_list_todas_viagens(list_viagens pointer) {
+void print_list_todas_viagens(list_viagens linked_list_viagens) {
   list_viagens aux;
-  aux = pointer->next;
+  aux = linked_list_viagens->next;
   while (aux != NULL) {
     printf("Destino: ");
     printf("%s \n",aux->viagem.destino);
@@ -48,9 +48,9 @@ void print_list_todas_viagens(list_viagens pointer) {
 void print_viagens_adquiridas(list_clientes linked_list_clientes) {
   struct Cliente *cliente = procura_cliente(linked_list_clientes);
   sort_data_recente_primeiro(cliente->viagens_adquiridas);
-  list_viagens pointer = cliente->viagens_adquiridas;
+  list_viagens viagens_adquiridas_cliente = cliente->viagens_adquiridas;
   list_viagens aux;
-  aux = pointer->next;
+  aux = viagens_adquiridas_cliente->next;
   while (aux != NULL) {
     printf("Destino: ");
     printf("%s \n",aux->viagem.destino);

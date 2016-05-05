@@ -3,11 +3,11 @@
 #include <string.h>
 #include "header.h"
 
-void sort_data(list_viagens a) {
+void sort_data_antigo_primeiro(list_viagens linked_list_viagens) {
   int n = 0;
   struct Viagem temp;
   list_viagens aux, aux2;
-  aux = a->next;
+  aux = linked_list_viagens->next;
   aux2 = aux->next;
   while(aux->next!=NULL) {
     while(aux2 != NULL) {
@@ -23,11 +23,11 @@ void sort_data(list_viagens a) {
   }
 }
 
-void sort_data_recente_primeiro(list_viagens a) {
+void sort_data_recente_primeiro(list_viagens linked_list_viagens) {
   int n = 0;
   struct Viagem temp;
   list_viagens aux, aux2;
-  aux = a->next;
+  aux = linked_list_viagens->next;
   aux2 = aux->next;
   while(aux->next!=NULL) {
     while(aux2 != NULL) {

@@ -21,10 +21,10 @@ list_viagens create_list_viagens() {
   return ptr;
 }
 
-void inserir_cliente(list_clientes linked_list) {
+void inserir_cliente(list_clientes linked_list_clientes) {
   struct Cliente novoCliente = inserir_dados_cliente();
   list_clientes aux;
-  aux = linked_list;
+  aux = linked_list_clientes;
   while (aux->next != NULL) {
     aux = aux->next;
   }
@@ -49,10 +49,10 @@ struct Cliente inserir_dados_cliente() {
   return novoCliente;
 }
 
-void inserir_viagem(list_viagens linked_list) {
+void inserir_viagem(list_viagens linked_list_viagens) {
   struct Viagem novaViagem = inserir_dados_viagem();
   list_viagens aux;
-  aux = linked_list;
+  aux = linked_list_viagens;
   while (aux->next != NULL) {
     aux = aux->next;
   }

@@ -12,46 +12,24 @@ void adquirir_viagem(list_viagens linked_list_viagens, list_clientes linked_list
   inserir_viagem_em_cliente(&cliente->viagens_adquiridas, linked_list_viagens, *cliente);
 }
 
-struct Cliente *procura_cliente(list_clientes linked_list_clientes) {
-  char *nome;
-  int numero;
-  nome = (char*) malloc((MAX_CHAR + 1)*sizeof(char));
-  printf("Nome do cliente: ");
-  scanf("%s", nome );
-  printf("Numero de cartao de cidadao: ");
-  scanf("%d", &numero );
-  list_clientes aux;
-  aux = linked_list_clientes;
-  while (aux->next != NULL) {
-    if (strcmp(nome, aux->next->cliente.nome) == 0 && aux->next->cliente.numero == numero) {
-      printf("Cliente: %s Numero: %d\n",aux->next->cliente.nome, aux->next->cliente.numero );
-      return &aux->next->cliente;
-    }
-    else {
-      aux = aux->next;
-    }
-  }
-  return 0;
-}
-
-void inserir_viagem_em_cliente(list_viagens *linked_list, list_viagens linked_list_viagens, struct Cliente cliente) {
+void inserir_viagem_em_cliente(list_viagens *viagens_adquiridas, list_viagens linked_list_viagens, struct Cliente cliente) {
   struct Viagem *novaViagem = escolhe_viagem(linked_list_viagens);
   if (novaViagem->numero_de_clientes == novaViagem->numero_maximo_de_clientes) {
     printf("Viagem cheia. Sera colocado em lista de espera.\n");
-    list_clientes aux2;
-    aux2 = novaViagem->clientes_espera;
-    while (aux2->next != NULL) {
-      aux2 = aux2->next;
+    list_clientes aux_clientes;
+    aux_clientes = novaViagem->clientes_espera;
+    while (aux_clientes->next != NULL) {
+      aux_clientes = aux_clientes->next;
     }
-    aux2->next = (list_clientes) malloc(sizeof(list_node));
-    aux2 = aux2->next;
-    aux2->cliente = cliente;
-    aux2->next = NULL;
+    aux_clientes->next = (list_clientes) malloc(sizeof(list_node));
+    aux_clientes = aux_clientes->next;
+    aux_clientes->cliente = cliente;
+    aux_clientes->next = NULL;
   }
   else {
     novaViagem->numero_de_clientes++; //incrementar o numero de clientes da viagem
     list_viagens aux;
-    aux = *linked_list;
+    aux = *viagens_adquiridas;
     while (aux->next != NULL) {
       aux = aux->next;
     }
@@ -62,27 +40,31 @@ void inserir_viagem_em_cliente(list_viagens *linked_list, list_viagens linked_li
   }
 }
 
-struct Viagem *escolhe_viagem(list_viagens pointer) {
+void cancelar_viagem(list_clientes linked_list_clientes) {
+  /*
+  struct Cliente cliente = *procura_cliente(linked_list_clientes);
+  struct Viagem viagem = *escolhe_viagem(cliente.viagens_adquiridas);
   list_viagens aux;
-  aux = pointer->next;
-  int i = 1;
+  aux = cliente->next;
   while (aux != NULL) {
-    printf("Viagem %d\n", i );
-    printf("Destino: ");
-    printf("%s \n",aux->viagem.destino);
-    printf("Data: ");
-    printf("%d/%d/%d \n",aux->viagem.data.dia, aux->viagem.data.mes, aux->viagem.data.ano );
-    aux = aux->next;
-    i++;
+    printf("%s\n", aux->viagem.destino);
+    printf("%s\n", viagem.destino);
+    printf("%d\n", aux->viagem.soma_data);
+    printf("%d\n", viagem.soma_data);
+    if (strcmp(aux->viagem.destino, viagem.destino) == 0 && aux->viagem.soma_data == viagem.soma_data) {
+      list_viagens n;
+      //Copy the data of next node to head
+      aux->viagem = aux->next->viagem;
+      //store address of next node
+      n = aux->next;
+      //Remove the link of next node
+      aux->next = aux->next->next;
+      //free memory
+      free(n);
+    }
+    else {
+      aux = aux->next;
+    }
   }
-  int opcao;
-  printf("Numero da viagem que pretende: ");
-  scanf("%d",&opcao );
-  aux = pointer->next;
-  i = 1;
-  while (aux != NULL && i != opcao ) {
-    aux = aux->next;
-    i++;
-  }
-  return &aux->viagem;
+  */
 }
