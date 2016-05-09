@@ -1,5 +1,5 @@
-projeto: main.o menu.o listas.o prints.o sort.o procura.o viagens.o header.h
-	gcc -o projeto main.o menu.o listas.o prints.o sort.o procura.o viagens.o
+projeto: main.o menu.o listas.o prints.o sort.o procura.o viagens.o protecoes.o header.h
+	gcc -o projeto main.o menu.o listas.o prints.o sort.o procura.o viagens.o protecoes.o
 main.o: main.c header.h
 	gcc -c main.c
 menu.o : menu.c header.h
@@ -14,3 +14,5 @@ procura.o : procura.c header.h
 	gcc -c procura.c
 viagens.o : viagens.c header.h
 	gcc -c viagens.c
+protecoes.o : protecoes.c header.h
+	gcc -c protecoes.c

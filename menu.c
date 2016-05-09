@@ -17,50 +17,40 @@ void menu() {
     printf("4) Listar todas as viagens de um destino \n");
     printf("5) Listar todas as viagens adquiridas de um cliente \n");
     printf("6) Listar todos os clientes \n");
-    printf("[-1 para sair] \n");
-    scanf("%d",&opcao);
-    if (opcao == 1) {
-      adquirir_viagem(linked_list_viagens, linked_list_clientes);
-    }
-    else if (opcao == 2) {
-      cancelar_viagem(linked_list_clientes);
-    }
-    else if (opcao == 3) {
+    printf("[0 para sair] \n");
+    opcao = prot_menu();
+    switch (opcao) {
+      case 1:
+        adquirir_viagem(linked_list_viagens, linked_list_clientes);
+      case 2:
+        cancelar_viagem(linked_list_clientes);
+      case 3:
 
-    }
-    else if (opcao == 4) {
-      char *destino;
-      destino = (char*) malloc((MAX_CHAR + 1) * sizeof(char));
-      printf("Destino: ");
-      scanf("%s", destino );
-      sort_data_antigo_primeiro(linked_list_viagens);
-      print_list_viagens(linked_list_viagens, destino);
-    }
-    else if (opcao == 5) {
-      print_viagens_adquiridas(linked_list_clientes);
-    }
-    else if (opcao == 6) {
-      print_list_clientes(linked_list_clientes);
-    }
-    else if (opcao == 7) {
-      inserir_cliente(linked_list_clientes);
-    }
-    else if (opcao == 8) {
-      inserir_viagem(linked_list_viagens);
-    }
-    else if (opcao == 9) {
-      //printa clientes em espera para uma viagem
-      struct Viagem *viagem = escolhe_viagem(linked_list_viagens);
-      print_list_clientes(viagem->clientes_espera);
-    }
-    else if (opcao == 10) {
-      print_list_todas_viagens(linked_list_viagens);
-    }
-    else if (opcao == -1) {
-      break;
-    }
-    else {
-      printf("Operacao invalida. Selecione um numero de 1 a 6. [-1 para sair]\n"); //TO DO VER SE METE MESMO UM NUMERO OU NAO
+      case 4: {
+        char *destino;
+        destino = (char*) malloc((MAX_CHAR + 1) * sizeof(char));
+        printf("Destino: ");
+        scanf("%s", destino );
+        sort_data_antigo_primeiro(linked_list_viagens);
+        print_list_viagens(linked_list_viagens, destino); }
+      case 5:
+        print_viagens_adquiridas(linked_list_clientes);
+      case 6:
+        print_list_clientes(linked_list_clientes);
+      case 7:
+        inserir_cliente(linked_list_clientes);
+      case 8:
+        inserir_viagem(linked_list_viagens);
+      case 9: {
+        //printa clientes em espera para uma viagem
+        struct Viagem *viagem = escolhe_viagem(linked_list_viagens);
+        print_list_clientes(viagem->clientes_espera); }
+      case 10:
+        print_list_todas_viagens(linked_list_viagens);
+      case 0:
+        return;
+      default:
+        printf("Operacao invalida. Selecione um numero de 1 a 6. [0 para sair]\n");
     }
   }
 }
