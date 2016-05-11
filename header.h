@@ -40,7 +40,7 @@ struct Cliente inserir_dados_cliente();
 void inserir_viagem(list_viagens linked_list_viagens);
 struct Viagem inserir_dados_viagem();
 void print_list_clientes(list_clientes linked_list_clientes);
-void print_list_viagens(list_viagens linked_list_viagens, char *destino);
+void print_list_viagens(list_viagens linked_list_viagens);
 void print_viagens_adquiridas(list_clientes linked_list_clientes);
 void print_list_todas_viagens(list_viagens linked_list_viagens);
 void sort_data_antigo_primeiro(list_viagens linked_list_viagens);

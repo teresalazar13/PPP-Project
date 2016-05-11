@@ -22,31 +22,35 @@ void menu() {
     switch (opcao) {
       case 1:
         adquirir_viagem(linked_list_viagens, linked_list_clientes);
+        break;
       case 2:
         cancelar_viagem(linked_list_clientes);
+        break;
       case 3:
-
-      case 4: {
-        char *destino;
-        destino = (char*) malloc((MAX_CHAR + 1) * sizeof(char));
-        printf("Destino: ");
-        scanf("%s", destino );
+        break;
+      case 4:
         sort_data_antigo_primeiro(linked_list_viagens);
-        print_list_viagens(linked_list_viagens, destino); }
+        print_list_viagens(linked_list_viagens);
+        break;
       case 5:
         print_viagens_adquiridas(linked_list_clientes);
+        break;
       case 6:
         print_list_clientes(linked_list_clientes);
+        break;
       case 7:
         inserir_cliente(linked_list_clientes);
+        break;
       case 8:
         inserir_viagem(linked_list_viagens);
+        break;
       case 9: {
-        //printa clientes em espera para uma viagem
-        struct Viagem *viagem = escolhe_viagem(linked_list_viagens);
-        print_list_clientes(viagem->clientes_espera); }
+        struct Viagem *viagem = escolhe_viagem(linked_list_viagens);         //printa clientes em espera para uma viagem
+        print_list_clientes(viagem->clientes_espera);
+        break; }
       case 10:
         print_list_todas_viagens(linked_list_viagens);
+        break;
       case 0:
         return;
       default:
