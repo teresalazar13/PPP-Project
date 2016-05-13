@@ -45,7 +45,7 @@ void menu() {
         inserir_viagem(linked_list_viagens);
         break;
       case 9: {
-        struct Viagem *viagem = escolhe_viagem(linked_list_viagens);         //printa clientes em espera para uma viagem
+        struct Viagem *viagem = escolhe_viagem(linked_list_viagens);  //printa clientes em espera para uma viagem
         print_list_clientes(viagem->clientes_espera);
         break; }
       case 10:

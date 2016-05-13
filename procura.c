@@ -46,5 +46,10 @@ struct Viagem *escolhe_viagem(list_viagens linked_list_viagens) {
     aux = aux->next;
     i++;
   }
-  return &aux->viagem;
+  if (i == opcao) {
+    return &aux->viagem;
+  }
+  else {
+    return 0;
+  }
 }

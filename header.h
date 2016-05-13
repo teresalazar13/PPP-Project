@@ -51,3 +51,4 @@ void inserir_viagem_em_cliente(list_viagens *linked_list, list_viagens linked_li
 struct Viagem *escolhe_viagem(list_viagens linked_list_viagens);
 void cancelar_viagem(list_clientes linked_list_clientes);
 int prot_menu();
+char *prot_string();
