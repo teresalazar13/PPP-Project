@@ -8,6 +8,7 @@ void menu() {
   linked_list_clientes = create_list_clientes();
   list_viagens linked_list_viagens;
   linked_list_viagens = create_list_viagens();
+  ficheiro(linked_list_viagens);
   int opcao;
   while (1) {
     printf("Pretende: \n");
@@ -27,6 +28,7 @@ void menu() {
         cancelar_viagem(linked_list_clientes);
         break;
       case 3:
+        cancelar_pedido_fila_de_espera(linked_list_clientes);
         break;
       case 4:
         sort_data_antigo_primeiro(linked_list_viagens);

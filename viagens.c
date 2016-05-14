@@ -72,3 +72,7 @@ void cancelar_viagem(list_clientes linked_list_clientes) {
   }
   */
 }
+
+void cancelar_pedido_fila_de_espera(list_clientes linked_list_clientes) {
+  
+}

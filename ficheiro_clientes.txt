@@ -1,0 +1,2 @@
+teresa,13,coimbra,7,7,7
+susana,12
