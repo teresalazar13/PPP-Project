@@ -23,6 +23,7 @@ list_viagens create_list_viagens() {
 
 void inserir_cliente(list_clientes linked_list_clientes) {
   struct Cliente novoCliente = inserir_dados_cliente();
+  escreve_cliente_ficheiro(novoCliente);
   list_clientes aux;
   aux = linked_list_clientes;
   while (aux->next != NULL) {
@@ -51,6 +52,7 @@ struct Cliente inserir_dados_cliente() {
 
 void inserir_viagem(list_viagens linked_list_viagens) {
   struct Viagem novaViagem = inserir_dados_viagem();
+  escreve_viagem_ficheiro(novaViagem);
   list_viagens aux;
   aux = linked_list_viagens;
   while (aux->next != NULL) {
@@ -85,51 +87,4 @@ struct Viagem inserir_dados_viagem() {
   novaViagem.numero_de_clientes = 0;
   novaViagem.clientes_espera = create_list_clientes();
   return novaViagem;
-}
-
-void inserir_viagem_ficheiro(list_viagens linked_list_viagens, struct Viagem novaViagem) {
-  list_viagens aux;
-  aux = linked_list_viagens;
-  while (aux->next != NULL) {
-    aux = aux->next;
-  }
-  aux->next = (list_viagens) malloc(sizeof(list_node2));
-  aux = aux->next;
-  aux->viagem = novaViagem;
-  aux->next = NULL;
-}
-
-void ficheiro(list_viagens linked_list_viagens) {
-  char line[MAX_CHAR + 1];
-  FILE *file = fopen("ficheiro_viagens.txt", "r");
-  struct Viagem novaViagem;
-  char *destino = (char *) malloc(MAX_CHAR * sizeof(char));
-  char *dia = (char *) malloc(MAX_CHAR * sizeof(char));
-  char *mes = (char *) malloc(MAX_CHAR * sizeof(char));
-  char *ano = (char *) malloc(MAX_CHAR * sizeof(char));
-  char *numero_maximo_de_clientes= (char *) malloc(MAX_CHAR * sizeof(char));
-  struct Data data;
-  while (fscanf(file, "%[^,\n]", destino) != EOF) {
-    fscanf(file, "%[^,\n]", destino);
-    novaViagem.destino = malloc((MAX_CHAR + 1) * sizeof(char));
-    strcpy(novaViagem.destino, destino);
-    fseek(file, 1, SEEK_CUR);
-    fscanf(file, "%[^,\n]", dia);
-    fseek(file, 1, SEEK_CUR);
-    fscanf(file, "%[^,\n]", mes);
-    fseek(file, 1, SEEK_CUR);
-    fscanf(file, "%[^,\n]", ano);
-    data.dia = atoi(dia);
-    data.mes = atoi(mes);
-    data.ano = atoi(ano);
-    novaViagem.data = data;
-    fseek(file, 1, SEEK_CUR);
-    fscanf(file, "%[^,\n]", numero_maximo_de_clientes);
-    fseek(file, 1, SEEK_CUR);
-    novaViagem.numero_maximo_de_clientes = atoi(numero_maximo_de_clientes);
-    novaViagem.numero_de_clientes = 0;
-    novaViagem.clientes_espera = create_list_clientes();
-    inserir_viagem_ficheiro(linked_list_viagens, novaViagem);
-  }
-  fclose(file);
 }

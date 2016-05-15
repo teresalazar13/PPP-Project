@@ -8,7 +8,9 @@ void menu() {
   linked_list_clientes = create_list_clientes();
   list_viagens linked_list_viagens;
   linked_list_viagens = create_list_viagens();
-  ficheiro(linked_list_viagens);
+  ficheiro_viagens(linked_list_viagens);
+  ficheiro_clientes(linked_list_clientes);
+  ficheiro_compras(linked_list_viagens, linked_list_clientes);
   int opcao;
   while (1) {
     printf("Pretende: \n");

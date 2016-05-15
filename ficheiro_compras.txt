@@ -1,0 +1,3 @@
+teresa,13,coimbra,70707
+luis,14,coimbra,70707
+coco,0,coimbra,70707

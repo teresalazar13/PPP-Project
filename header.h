@@ -54,5 +54,12 @@ void cancelar_pedido_fila_de_espera(list_clientes linked_list_clientes);
 int prot_menu();
 char *prot_string();
 
-void ficheiro(list_viagens linked_list_viagens);
+void ficheiro_viagens(list_viagens linked_list_viagens);
 void inserir_viagem_ficheiro(list_viagens linked_list_viagens, struct Viagem novaViagem);
+void ficheiro_clientes(list_clientes linked_list_clientes);
+void inserir_cliente_ficheiro(list_clientes linked_list_clientes, struct Cliente novoCliente);
+void ficheiro_compras(list_viagens linked_list_viagens, list_clientes linked_list_clientes);
+void inserir_viagem_em_cliente_ficheiro(list_viagens *viagens_adquiridas, struct Cliente cliente, struct Viagem *novaViagem);
+void escreve_cliente_ficheiro(struct Cliente novoCliente);
+void escreve_viagem_ficheiro(struct Viagem novaViagem);
+void escreve_compras_ficheiro(struct Viagem viagem, struct Cliente cliente);

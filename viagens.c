@@ -42,6 +42,7 @@ void inserir_viagem_em_cliente(list_viagens *viagens_adquiridas, list_viagens li
     aux->viagem = *novaViagem;
     aux->next = NULL;
   }
+  escreve_compras_ficheiro(*novaViagem, cliente);
 }
 
 void cancelar_viagem(list_clientes linked_list_clientes) {
@@ -74,5 +75,5 @@ void cancelar_viagem(list_clientes linked_list_clientes) {
 }
 
 void cancelar_pedido_fila_de_espera(list_clientes linked_list_clientes) {
-  
+
 }
