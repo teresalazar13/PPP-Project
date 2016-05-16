@@ -46,34 +46,73 @@ void inserir_viagem_em_cliente(list_viagens *viagens_adquiridas, list_viagens li
 }
 
 void cancelar_viagem(list_clientes linked_list_clientes) {
-  /*
-  struct Cliente cliente = *procura_cliente(linked_list_clientes);
-  struct Viagem viagem = *escolhe_viagem(cliente.viagens_adquiridas);
-  list_viagens aux;
-  aux = cliente->next;
-  while (aux != NULL) {
-    printf("%s\n", aux->viagem.destino);
-    printf("%s\n", viagem.destino);
-    printf("%d\n", aux->viagem.soma_data);
-    printf("%d\n", viagem.soma_data);
-    if (strcmp(aux->viagem.destino, viagem.destino) == 0 && aux->viagem.soma_data == viagem.soma_data) {
-      list_viagens n;
-      //Copy the data of next node to head
-      aux->viagem = aux->next->viagem;
-      //store address of next node
-      n = aux->next;
-      //Remove the link of next node
-      aux->next = aux->next->next;
-      //free memory
-      free(n);
-    }
-    else {
-      aux = aux->next;
-    }
+  struct Cliente *cliente = procura_cliente(linked_list_clientes);
+  if (cliente == 0) { //caso cliente nao exista
+    printf("Cliente nao encontrado.\n");
+    return;
   }
-  */
+  struct Viagem *viagem = escolhe_viagem(cliente->viagens_adquiridas);
+  if (viagem == 0) { //caso viagem nao exista
+    printf("Viagem nao existente\n");
+    return;
+  }
+  list_viagens aux, aux_anterior;
+  aux = cliente->viagens_adquiridas->next;
+  aux_anterior = cliente->viagens_adquiridas;
+  while (aux != NULL && (strcmp(aux->viagem.destino, viagem->destino) != 0 || aux->viagem.soma_data != viagem->soma_data)) {
+    aux = aux->next;
+    aux_anterior = aux_anterior->next;
+  }
+  if (aux->next!=NULL) {
+    list_viagens n;
+    aux->viagem = aux->next->viagem;
+    n = aux->next;
+    aux->next = aux->next->next;
+    free(n->next);
+    free(n);
+  }
+  else {
+    free(aux->next);
+    free(aux);
+    aux_anterior->next = NULL;
+  }
 }
 
-void cancelar_pedido_fila_de_espera(list_clientes linked_list_clientes) {
+/*
+void promover_cliente() {
 
+}
+*/
+
+void cancelar_pedido_fila_de_espera(list_viagens linked_list_viagens) {
+  struct Viagem *viagem = escolhe_viagem(linked_list_viagens);
+  if (viagem == 0) { //caso viagem nao exista
+    printf("Viagem nao existente\n");
+    return;
+  }
+  struct Cliente *cliente = procura_cliente(viagem->clientes_espera);
+  if (cliente == 0) { //caso cliente nao exista
+    printf("Cliente nao encontrado ou nao esta em lista de espera.\n");
+    return;
+  }
+  list_clientes aux, aux_anterior;
+  aux = viagem->clientes_espera->next;
+  aux_anterior = viagem->clientes_espera;
+  while (aux != NULL && (strcmp(aux->cliente.nome, cliente->nome) != 0 || aux->cliente.numero != cliente->numero)) {
+    aux = aux->next;
+    aux_anterior = aux_anterior->next;
+  }
+  if (aux->next!=NULL) {
+    list_clientes n;
+    aux->cliente = aux->next->cliente;
+    n = aux->next;
+    aux->next = aux->next->next;
+    free(n->next);
+    free(n);
+  }
+  else {
+    free(aux->next);
+    free(aux);
+    aux_anterior->next = NULL;
+  }
 }

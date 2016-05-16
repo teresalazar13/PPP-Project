@@ -118,7 +118,6 @@ void ficheiro_compras(list_viagens linked_list_viagens, list_clientes linked_lis
     aux_viagens = linked_list_viagens;
     while (aux_viagens->next != NULL) {
       if (strcmp(destino, aux_viagens->next->viagem.destino) == 0 && aux_viagens->next->viagem.soma_data == atoi(soma_data)) {
-        printf("d\n");
         viagem = &aux_viagens->next->viagem;
         break;
       }

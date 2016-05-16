@@ -1,3 +1,8 @@
 teresa,13,coimbra,70707
 luis,14,coimbra,70707
 coco,0,coimbra,70707
+teresa,13,coimbra,10608
+acdwvwv,3,coimbra,70707
+teresa,13,coimbra,10608
+teresa,13,yolo,90909
+teresa,13,tata,10608

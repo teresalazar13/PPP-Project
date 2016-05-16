@@ -30,7 +30,7 @@ void menu() {
         cancelar_viagem(linked_list_clientes);
         break;
       case 3:
-        cancelar_pedido_fila_de_espera(linked_list_clientes);
+        cancelar_pedido_fila_de_espera(linked_list_viagens);
         break;
       case 4:
         sort_data_antigo_primeiro(linked_list_viagens);
