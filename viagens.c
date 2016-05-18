@@ -53,36 +53,50 @@ void cancelar_viagem(list_clientes linked_list_clientes) {
   }
   struct Viagem *viagem = escolhe_viagem(cliente->viagens_adquiridas);
   if (viagem == 0) { //caso viagem nao exista
-    printf("Viagem nao existente\n");
+    printf("Viagem nao existente.\n");
     return;
+  }
+  apaga_compra(*cliente, *viagem);
+  if (viagem->clientes_espera->next != NULL) { //se houver clientes em espera, promover cliente no topo
+    promover_cliente(viagem, linked_list_clientes);
+  }
+  else { //se nao houver clientes em espera, diminuir o numero de clientes que adquiriram a viagem
+    viagem->numero_de_clientes--;
   }
   list_viagens aux, aux_anterior;
   aux = cliente->viagens_adquiridas->next;
   aux_anterior = cliente->viagens_adquiridas;
-  while (aux != NULL && (strcmp(aux->viagem.destino, viagem->destino) != 0 || aux->viagem.soma_data != viagem->soma_data)) {
+  while (aux != NULL) {
+    if (strcmp(aux->viagem.destino, viagem->destino) == 0 && aux->viagem.soma_data == viagem->soma_data) {
+      aux_anterior->next = aux->next;
+      free(aux);
+      break;
+    }
     aux = aux->next;
     aux_anterior = aux_anterior->next;
   }
-  if (aux->next!=NULL) {
-    list_viagens n;
-    aux->viagem = aux->next->viagem;
-    n = aux->next;
-    aux->next = aux->next->next;
-    free(n->next);
-    free(n);
-  }
-  else {
-    free(aux->next);
-    free(aux);
-    aux_anterior->next = NULL;
-  }
 }
 
-/*
-void promover_cliente() {
+void promover_cliente(struct Viagem *viagem, list_clientes linked_list_clientes) {
+  print_list_clientes(viagem->clientes_espera);
+  list_clientes aux, aux_anterior; //remover cliente_promover de lista de espera
+  struct Cliente cliente_promovido = viagem->clientes_espera->next->cliente;
+  aux = viagem->clientes_espera->next;
+  aux_anterior = viagem->clientes_espera;
+  aux_anterior->next = aux->next;
+  free(aux);
 
+  list_viagens aux_viagens; //adicionar viagem a cliente no topo da lista de espera
+  aux_viagens = cliente_promovido.viagens_adquiridas;
+  while (aux_viagens->next != NULL) {
+    aux_viagens = aux_viagens->next;
+  }
+  aux_viagens->next = (list_viagens) malloc(sizeof(list_node2));
+  aux_viagens = aux_viagens->next;
+  aux_viagens->viagem = *viagem;
+  aux_viagens->next = NULL;
+  printf("O cliente %s foi promovido.\n",cliente_promovido.nome );
 }
-*/
 
 void cancelar_pedido_fila_de_espera(list_viagens linked_list_viagens) {
   struct Viagem *viagem = escolhe_viagem(linked_list_viagens);
@@ -98,21 +112,14 @@ void cancelar_pedido_fila_de_espera(list_viagens linked_list_viagens) {
   list_clientes aux, aux_anterior;
   aux = viagem->clientes_espera->next;
   aux_anterior = viagem->clientes_espera;
-  while (aux != NULL && (strcmp(aux->cliente.nome, cliente->nome) != 0 || aux->cliente.numero != cliente->numero)) {
+  while (aux != NULL) {
+    if (strcmp(aux->cliente.nome, cliente->nome) == 0 && aux->cliente.numero == cliente->numero) {
+      aux_anterior->next = aux->next;
+      free(aux);
+      break;
+    }
     aux = aux->next;
     aux_anterior = aux_anterior->next;
   }
-  if (aux->next!=NULL) {
-    list_clientes n;
-    aux->cliente = aux->next->cliente;
-    n = aux->next;
-    aux->next = aux->next->next;
-    free(n->next);
-    free(n);
-  }
-  else {
-    free(aux->next);
-    free(aux);
-    aux_anterior->next = NULL;
-  }
+  apaga_compra(*cliente, *viagem);
 }

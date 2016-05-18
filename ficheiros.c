@@ -181,3 +181,39 @@ void escreve_compras_ficheiro(struct Viagem viagem, struct Cliente cliente) {
   fprintf(file, "%d\n", viagem.soma_data );
   fclose(file);
 }
+
+void apaga_compra(struct Cliente cliente, struct Viagem viagem) {
+  char *nome_apagar;
+  int numero_apagar;
+  char *destino_apagar;
+  int soma_data_apagar;
+  nome_apagar = cliente.nome;
+  numero_apagar = cliente.numero;
+  destino_apagar = viagem.destino;
+  soma_data_apagar = viagem.soma_data;
+
+  FILE *file = fopen("ficheiro_compras.txt", "r");
+  FILE *file_temp = fopen("temp.txt", "w+");
+  char *nome, *numero, *destino, *soma_data;
+  nome = (char*) malloc((MAX_CHAR + 1)*sizeof(char));
+  numero = (char*) malloc((MAX_CHAR + 1)*sizeof(char));
+  destino = (char*) malloc((MAX_CHAR + 1)*sizeof(char));
+  soma_data = (char*) malloc((MAX_CHAR + 1)*sizeof(char));
+  while (fscanf(file, "%[^,\n]", nome) != EOF) {
+    fscanf(file, "%[^,\n]", nome);
+    fseek(file, 1, SEEK_CUR);
+    fscanf(file, "%[^,\n]", numero);
+    fseek(file, 1, SEEK_CUR);
+    fscanf(file, "%[^,\n]", destino);
+    fseek(file, 1, SEEK_CUR);
+    fscanf(file, "%[^,\n]", soma_data);
+    fseek(file, 1, SEEK_CUR);
+    if (strcmp(nome, nome_apagar) != 0 || atoi(numero) != numero_apagar || strcmp(destino, destino_apagar) != 0 || atoi(soma_data) != soma_data_apagar) {
+      fprintf(file_temp, "%s,%s,%s,%s\n", nome,numero,destino,soma_data );
+    }
+  }
+  fclose(file);
+  fclose(file_temp);
+  remove("ficheiro_compras.txt");
+  rename("temp.txt", "ficheiro_compras.txt");
+}

@@ -37,7 +37,7 @@ char *prot_string() {
     }
     if (i == len) {
       if (str[0] >= 'a' && str[0] <= 'z') {
-        printf("Palavra Inválido \n");
+        printf("Palavra Inválida \n");
         break;
       }
       else {

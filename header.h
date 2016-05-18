@@ -51,6 +51,7 @@ void inserir_viagem_em_cliente(list_viagens *linked_list, list_viagens linked_li
 struct Viagem *escolhe_viagem(list_viagens linked_list_viagens);
 void cancelar_viagem(list_clientes linked_list_clientes);
 void cancelar_pedido_fila_de_espera(list_viagens linked_list_viagens);
+void promover_cliente(struct Viagem *viagem, list_clientes linked_list_clientes);
 int prot_menu();
 char *prot_string();
 
@@ -63,3 +64,4 @@ void inserir_viagem_em_cliente_ficheiro(list_viagens *viagens_adquiridas, struct
 void escreve_cliente_ficheiro(struct Cliente novoCliente);
 void escreve_viagem_ficheiro(struct Viagem novaViagem);
 void escreve_compras_ficheiro(struct Viagem viagem, struct Cliente cliente);
+void apaga_compra(struct Cliente cliente, struct Viagem viagem);
