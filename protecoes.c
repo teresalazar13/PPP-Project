@@ -31,19 +31,11 @@ char *prot_string() {
     while (i < len) {
       if ((str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z')) {
         printf("Não pode introduzir números ou símbolos \n");
-        break;
+        return 0;
       }
       i++;
     }
-    if (i == len) {
-      if (str[0] >= 'a' && str[0] <= 'z') {
-        printf("Palavra Inválida \n");
-        break;
-      }
-      else {
-        return str;
-      }
-    }
+    return str;
   }
   return 0;
 }

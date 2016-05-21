@@ -27,7 +27,7 @@ void menu() {
         adquirir_viagem(linked_list_viagens, linked_list_clientes);
         break;
       case 2:
-        cancelar_viagem(linked_list_clientes);
+        cancelar_viagem(linked_list_clientes, linked_list_viagens);
         break;
       case 3:
         cancelar_pedido_fila_de_espera(linked_list_viagens);

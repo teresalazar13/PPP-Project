@@ -6,9 +6,12 @@
 struct Cliente *procura_cliente(list_clientes linked_list_clientes) {
   char *nome;
   int numero;
-  nome = (char*) malloc((MAX_CHAR + 1)*sizeof(char));
-  printf("Nome do cliente: ");
-  scanf("%s", nome );
+  nome = 0;
+  while (nome == 0) {
+    printf("Nome do cliente: ");
+    getchar();
+    nome = prot_string();
+  }
   printf("Numero de cartao de cidadao: ");
   scanf("%d", &numero );
   list_clientes aux;

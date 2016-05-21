@@ -45,7 +45,7 @@ void inserir_viagem_em_cliente(list_viagens *viagens_adquiridas, list_viagens li
   escreve_compras_ficheiro(*novaViagem, cliente);
 }
 
-void cancelar_viagem(list_clientes linked_list_clientes) {
+void cancelar_viagem(list_clientes linked_list_clientes, list_viagens linked_list_viagens) {
   struct Cliente *cliente = procura_cliente(linked_list_clientes);
   if (cliente == 0) { //caso cliente nao exista
     printf("Cliente nao encontrado.\n");
@@ -61,9 +61,9 @@ void cancelar_viagem(list_clientes linked_list_clientes) {
     promover_cliente(viagem, linked_list_clientes);
   }
   else { //se nao houver clientes em espera, diminuir o numero de clientes que adquiriram a viagem
-    viagem->numero_de_clientes--;
+    diminui_numero_clientes(linked_list_viagens, *viagem); //encontrar a viagem na lista de viagens e diminuir o n de clientes
   }
-  list_viagens aux, aux_anterior;
+  list_viagens aux, aux_anterior; //cancelar viagem
   aux = cliente->viagens_adquiridas->next;
   aux_anterior = cliente->viagens_adquiridas;
   while (aux != NULL) {
@@ -78,7 +78,6 @@ void cancelar_viagem(list_clientes linked_list_clientes) {
 }
 
 void promover_cliente(struct Viagem *viagem, list_clientes linked_list_clientes) {
-  print_list_clientes(viagem->clientes_espera);
   list_clientes aux, aux_anterior; //remover cliente_promover de lista de espera
   struct Cliente cliente_promovido = viagem->clientes_espera->next->cliente;
   aux = viagem->clientes_espera->next;
@@ -96,6 +95,17 @@ void promover_cliente(struct Viagem *viagem, list_clientes linked_list_clientes)
   aux_viagens->viagem = *viagem;
   aux_viagens->next = NULL;
   printf("O cliente %s foi promovido.\n",cliente_promovido.nome );
+}
+
+void diminui_numero_clientes(list_viagens linked_list_viagens, struct Viagem viagem) {
+  list_viagens aux;
+  aux = linked_list_viagens->next;
+  while (aux != NULL) {
+    if (strcmp(aux->viagem.destino, viagem.destino) == 0 && aux->viagem.soma_data == viagem.soma_data) {
+      aux->viagem.numero_de_clientes--;
+    }
+    aux = aux->next;
+  }
 }
 
 void cancelar_pedido_fila_de_espera(list_viagens linked_list_viagens) {
