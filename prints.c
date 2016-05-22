@@ -17,9 +17,8 @@ void print_list_clientes(list_clientes linked_list_clientes) {
 
 void print_list_viagens(list_viagens linked_list_viagens) {
   char *destino;
-  destino = (char*) malloc((MAX_CHAR + 1) * sizeof(char));
   printf("Destino: ");
-  scanf("%s", destino );
+  destino = prot_string();
   list_viagens aux;
   aux = linked_list_viagens->next;
   while (aux != NULL) {

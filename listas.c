@@ -39,9 +39,9 @@ struct Cliente inserir_dados_cliente() {
   int numero;
   struct Cliente novoCliente;
   novoCliente.nome = malloc((MAX_CHAR + 1) * sizeof(char));
-  char nome[MAX_CHAR + 1];
+  char *nome;
   printf("Nome: ");
-  scanf("%s", nome);
+  nome = prot_string();
   strcpy(novoCliente.nome, nome);
   printf("Numero: ");
   scanf("%d",&numero );
@@ -66,12 +66,12 @@ void inserir_viagem(list_viagens linked_list_viagens) {
 
 struct Viagem inserir_dados_viagem() {
   struct Viagem novaViagem;
-  novaViagem.destino = malloc((MAX_CHAR + 1) * sizeof(char));
-  char destino[MAX_CHAR + 1];
   struct Data data;
   int dia, mes, ano, soma_data, numero_maximo;
+  char *destino;
   printf("Destino: ");
-  scanf("%s", destino);
+  destino = prot_string();
+  novaViagem.destino = malloc((MAX_CHAR + 1) * sizeof(char));
   strcpy(novaViagem.destino, destino);
   printf("Data Dia/Mes/Ano: ");
   scanf("%d/%d/%d",&dia, &mes, &ano );

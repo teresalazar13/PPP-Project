@@ -11,7 +11,7 @@ int prot_menu() {
     int len = strlen(str);
     while (i < len) {
       if (str[i] < '0' || str[i] > '9') {
-        return 30; //vai para default
+        return 30; /*vai para default*/
       }
       i++;
     }
@@ -29,13 +29,32 @@ char *prot_string() {
     int i = 0;
     int len = strlen(str);
     while (i < len) {
-      if ((str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z')) {
-        printf("Não pode introduzir números ou símbolos \n");
-        return 0;
+      if ((str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z') && str[i] != 32) {
+        printf("Nao pode introduzir numeros ou simbolos. \n");
+        printf("Tente de novo: ");
+        return prot_string();
       }
       i++;
     }
     return str;
   }
-  return 0;
+  return str;
+}
+
+int prot_int() {
+  char *inteiro = (char *) malloc(MAX_CHAR * sizeof(char));
+  while (scanf(" %[^\n]", inteiro) ) {
+    int i = 0;
+    int len = strlen(inteiro);
+    while (i < len) {
+      if (inteiro[i] < '0' || inteiro[i] > '9') {
+        printf("Nao pode introduzir numeros ou simbolos. \n");
+        printf("Tente de novo: ");
+        return prot_int();
+      }
+      i++;
+    }
+    return atoi(inteiro);
+  }
+  return atoi(inteiro);
 }

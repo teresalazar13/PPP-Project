@@ -5,7 +5,7 @@
 
 void adquirir_viagem(list_viagens linked_list_viagens, list_clientes linked_list_clientes) {
   struct Cliente *cliente = procura_cliente(linked_list_clientes);
-  if (cliente == 0) { //caso cliente nao exista
+  if (cliente == 0) { /*caso cliente nao exista*/
     printf("Cliente nao encontrado.\n");
     return;
   }
@@ -14,12 +14,12 @@ void adquirir_viagem(list_viagens linked_list_viagens, list_clientes linked_list
 
 void inserir_viagem_em_cliente(list_viagens *viagens_adquiridas, list_viagens linked_list_viagens, struct Cliente cliente) {
   struct Viagem *novaViagem = escolhe_viagem(linked_list_viagens);
-  if (novaViagem == 0) { //caso viagem nao exista
+  if (novaViagem == 0) { /*caso viagem nao exista*/
     printf("Viagem nao existente\n");
     return;
   }
-  if (novaViagem->numero_de_clientes == novaViagem->numero_maximo_de_clientes) { //se estiver cheio colocar em lista de espera
-    printf("Viagem cheia. Sera colocado em lista de espera.\n");
+  if (novaViagem->numero_de_clientes == novaViagem->numero_maximo_de_clientes) { /*se estiver cheio colocar em lista de espera*/
+    printf("Viagem cheia. Sera colocad em lista de espera.\n");
     list_clientes aux_clientes;
     aux_clientes = novaViagem->clientes_espera;
     while (aux_clientes->next != NULL) {
@@ -31,7 +31,7 @@ void inserir_viagem_em_cliente(list_viagens *viagens_adquiridas, list_viagens li
     aux_clientes->next = NULL;
   }
   else {
-    novaViagem->numero_de_clientes++; //incrementar o numero de clientes da viagem
+    novaViagem->numero_de_clientes++; /*incrementar o numero de clientes da viagem*/
     list_viagens aux;
     aux = *viagens_adquiridas;
     while (aux->next != NULL) {
@@ -47,23 +47,23 @@ void inserir_viagem_em_cliente(list_viagens *viagens_adquiridas, list_viagens li
 
 void cancelar_viagem(list_clientes linked_list_clientes, list_viagens linked_list_viagens) {
   struct Cliente *cliente = procura_cliente(linked_list_clientes);
-  if (cliente == 0) { //caso cliente nao exista
+  if (cliente == 0) { /*caso cliente nao exista*/
     printf("Cliente nao encontrado.\n");
     return;
   }
   struct Viagem *viagem = escolhe_viagem(cliente->viagens_adquiridas);
-  if (viagem == 0) { //caso viagem nao exista
+  if (viagem == 0) { /*caso viagem nao exista*/
     printf("Viagem nao existente.\n");
     return;
   }
   apaga_compra(*cliente, *viagem);
-  if (viagem->clientes_espera->next != NULL) { //se houver clientes em espera, promover cliente no topo
+  if (viagem->clientes_espera->next != NULL) { /*se houver clientes em espera, promover cliente no topo*/
     promover_cliente(viagem, linked_list_clientes);
   }
-  else { //se nao houver clientes em espera, diminuir o numero de clientes que adquiriram a viagem
-    diminui_numero_clientes(linked_list_viagens, *viagem); //encontrar a viagem na lista de viagens e diminuir o n de clientes
+  else { /*se nao houver clientes em espera, diminuir o numero de clientes que adquiriram a viagem*/
+    diminui_numero_clientes(linked_list_viagens, *viagem); /*encontrar a viagem na lista de viagens e diminuir o n de clientes*/
   }
-  list_viagens aux, aux_anterior; //cancelar viagem
+  list_viagens aux, aux_anterior; /*cancelar viagem*/
   aux = cliente->viagens_adquiridas->next;
   aux_anterior = cliente->viagens_adquiridas;
   while (aux != NULL) {
@@ -78,14 +78,14 @@ void cancelar_viagem(list_clientes linked_list_clientes, list_viagens linked_lis
 }
 
 void promover_cliente(struct Viagem *viagem, list_clientes linked_list_clientes) {
-  list_clientes aux, aux_anterior; //remover cliente_promover de lista de espera
+  list_clientes aux, aux_anterior; /*remover cliente_promover de lista de espera*/
   struct Cliente cliente_promovido = viagem->clientes_espera->next->cliente;
   aux = viagem->clientes_espera->next;
   aux_anterior = viagem->clientes_espera;
   aux_anterior->next = aux->next;
   free(aux);
 
-  list_viagens aux_viagens; //adicionar viagem a cliente no topo da lista de espera
+  list_viagens aux_viagens; /*adicionar viagem a cliente no topo da lista de espera*/
   aux_viagens = cliente_promovido.viagens_adquiridas;
   while (aux_viagens->next != NULL) {
     aux_viagens = aux_viagens->next;
@@ -110,12 +110,12 @@ void diminui_numero_clientes(list_viagens linked_list_viagens, struct Viagem via
 
 void cancelar_pedido_fila_de_espera(list_viagens linked_list_viagens) {
   struct Viagem *viagem = escolhe_viagem(linked_list_viagens);
-  if (viagem == 0) { //caso viagem nao exista
+  if (viagem == 0) { /*caso viagem nao exista*/
     printf("Viagem nao existente\n");
     return;
   }
   struct Cliente *cliente = procura_cliente(viagem->clientes_espera);
-  if (cliente == 0) { //caso cliente nao exista
+  if (cliente == 0) { /*caso cliente nao exista*/
     printf("Cliente nao encontrado ou nao esta em lista de espera.\n");
     return;
   }

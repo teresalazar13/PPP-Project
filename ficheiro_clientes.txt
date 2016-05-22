@@ -1,7 +1,6 @@
 teresa,13
 teresa salazar,13
 luis,14
-coco,0
-acdwvwv,3
-fbewfefeqfqedfefqe,3
 miguel,12
+camila,2
+jorge,15

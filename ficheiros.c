@@ -131,7 +131,7 @@ void ficheiro_compras(list_viagens linked_list_viagens, list_clientes linked_lis
 }
 
 void inserir_viagem_em_cliente_ficheiro(list_viagens *viagens_adquiridas, struct Cliente cliente, struct Viagem *novaViagem) {
-  if (novaViagem->numero_de_clientes == novaViagem->numero_maximo_de_clientes) { //se estiver cheio colocar em lista de espera
+  if (novaViagem->numero_de_clientes == novaViagem->numero_maximo_de_clientes) { /*se estiver cheio colocar em lista de espera*/
     list_clientes aux_clientes;
     aux_clientes = novaViagem->clientes_espera;
     while (aux_clientes->next != NULL) {
@@ -143,7 +143,7 @@ void inserir_viagem_em_cliente_ficheiro(list_viagens *viagens_adquiridas, struct
     aux_clientes->next = NULL;
   }
   else {
-    novaViagem->numero_de_clientes++; //incrementar o numero de clientes da viagem
+    novaViagem->numero_de_clientes++; /*incrementar o numero de clientes da viagem*/
     list_viagens aux;
     aux = *viagens_adquiridas;
     while (aux->next != NULL) {
