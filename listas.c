@@ -44,7 +44,7 @@ struct Cliente inserir_dados_cliente() {
   nome = prot_string();
   strcpy(novoCliente.nome, nome);
   printf("Numero: ");
-  scanf("%d",&numero );
+  numero = prot_int();
   novoCliente.numero = numero;
   novoCliente.viagens_adquiridas = create_list_viagens();
   return novoCliente;
@@ -82,7 +82,7 @@ struct Viagem inserir_dados_viagem() {
   soma_data = ano * 10000 + mes * 100 + dia;
   novaViagem.soma_data = soma_data;
   printf("Numero maximo de clientes: ");
-  scanf("%d",&numero_maximo );
+  numero_maximo = prot_int();
   novaViagem.numero_maximo_de_clientes = numero_maximo;
   novaViagem.numero_de_clientes = 0;
   novaViagem.clientes_espera = create_list_clientes();

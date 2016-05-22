@@ -9,7 +9,7 @@ struct Cliente *procura_cliente(list_clientes linked_list_clientes) {
   printf("Nome do cliente: ");
   nome = prot_string();
   printf("Numero de cartao de cidadao: ");
-  scanf("%d", &numero );
+  numero = prot_int();
   list_clientes aux;
   aux = linked_list_clientes;
   while (aux->next != NULL) {
@@ -28,17 +28,15 @@ struct Viagem *escolhe_viagem(list_viagens linked_list_viagens) {
   aux = linked_list_viagens->next;
   int i = 1;
   while (aux != NULL) {
-    printf("Viagem %d\n", i );
-    printf("Destino: ");
-    printf("%s \n",aux->viagem.destino);
-    printf("Data: ");
-    printf("%d/%d/%d \n",aux->viagem.data.dia, aux->viagem.data.mes, aux->viagem.data.ano );
+    printf("Viagem %d\n", i);
+    printf("Destino: %s\n",aux->viagem.destino);
+    printf("Data: %d/%d/%d\n",aux->viagem.data.dia, aux->viagem.data.mes, aux->viagem.data.ano );
     aux = aux->next;
     i++;
   }
   int opcao;
   printf("Numero da viagem que pretende: ");
-  scanf("%d",&opcao );
+  opcao = prot_int();
   aux = linked_list_viagens->next;
   i = 1;
   while (aux != NULL && i != opcao ) {

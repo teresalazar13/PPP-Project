@@ -15,11 +15,11 @@ void adquirir_viagem(list_viagens linked_list_viagens, list_clientes linked_list
 void inserir_viagem_em_cliente(list_viagens *viagens_adquiridas, list_viagens linked_list_viagens, struct Cliente cliente) {
   struct Viagem *novaViagem = escolhe_viagem(linked_list_viagens);
   if (novaViagem == 0) { /*caso viagem nao exista*/
-    printf("Viagem nao existente\n");
+    printf("Viagem nao existente.\n");
     return;
   }
   if (novaViagem->numero_de_clientes == novaViagem->numero_maximo_de_clientes) { /*se estiver cheio colocar em lista de espera*/
-    printf("Viagem cheia. Sera colocad em lista de espera.\n");
+    printf("Viagem cheia. Sera colocado em lista de espera.\n");
     list_clientes aux_clientes;
     aux_clientes = novaViagem->clientes_espera;
     while (aux_clientes->next != NULL) {

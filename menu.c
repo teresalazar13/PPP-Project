@@ -49,16 +49,12 @@ void menu() {
         inserir_viagem(linked_list_viagens);
         break;
       case 9: {
-        struct Viagem *viagem = escolhe_viagem(linked_list_viagens);  //printa clientes em espera para uma viagem
-        print_list_clientes(viagem->clientes_espera);
-        break; }
-      case 10:
         print_list_todas_viagens(linked_list_viagens);
-        break;
+        break; }
       case 0:
         return;
       default:
-        printf("Operacao invalida. Selecione um numero de 1 a 6. [0 para sair]\n");
+        return;
     }
   }
 }

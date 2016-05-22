@@ -53,8 +53,10 @@ void cancelar_viagem(list_clientes linked_list_clientes, list_viagens linked_lis
 void cancelar_pedido_fila_de_espera(list_viagens linked_list_viagens);
 void diminui_numero_clientes(list_viagens linked_list_viagens, struct Viagem viagem);
 void promover_cliente(struct Viagem *viagem, list_clientes linked_list_clientes);
+
 int prot_menu();
 char *prot_string();
+int prot_int();
 
 void ficheiro_viagens(list_viagens linked_list_viagens);
 void inserir_viagem_ficheiro(list_viagens linked_list_viagens, struct Viagem novaViagem);
