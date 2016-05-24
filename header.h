@@ -1,5 +1,5 @@
 typedef struct node *list_clientes;
-typedef struct node2 *list_viagens;
+typedef struct node_viagens *list_viagens;
 
 #define MAX_CHAR 32
 
@@ -27,10 +27,10 @@ typedef struct node {
   list_clientes next;
 }list_node;
 
-typedef struct node2 {
+typedef struct node_viagens {
   struct Viagem viagem;
   list_viagens next;
-}list_node2;
+}list_node_viagens;
 
 void menu();
 list_clientes create_list_clientes();
@@ -47,7 +47,6 @@ void sort_data_antigo_primeiro(list_viagens linked_list_viagens);
 void sort_data_recente_primeiro(list_viagens linked_list_viagens);
 void adquirir_viagem(list_viagens linked_list_viagens, list_clientes linked_list_clientes);
 struct Cliente *procura_cliente(list_clientes linked_list_clientes);
-void inserir_viagem_em_cliente(list_viagens *viagens_adquiridas, list_viagens linked_list_viagens, struct Cliente cliente);
 struct Viagem *escolhe_viagem(list_viagens linked_list_viagens);
 void cancelar_viagem(list_clientes linked_list_clientes, list_viagens linked_list_viagens);
 void cancelar_pedido_fila_de_espera(list_viagens linked_list_viagens);
@@ -57,6 +56,8 @@ void promover_cliente(struct Viagem *viagem, list_clientes linked_list_clientes)
 int prot_menu();
 char *prot_string();
 int prot_int();
+int prot_int_bi();
+struct Data prot_data();
 
 void ficheiro_viagens(list_viagens linked_list_viagens);
 void inserir_viagem_ficheiro(list_viagens linked_list_viagens, struct Viagem novaViagem);

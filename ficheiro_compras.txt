@@ -1,8 +1,9 @@
-miguel,12,coimbra,70707
-teresa salazar,13,coimbra,70707
-teresa,13,coimbra,70707
-teresa,13,yolo,90909
-teresa,13,coimbra,10608
-luis,14,coimbra,70707
-teresa salazar,13,yolo,90909
-teresa salazar,13,lisboa,80808
+Teresa Salazar,12345678,Lisboa,20160831
+Teresa Salazar,12345678,Berlim,20170101
+Teresa Salazar,12345678,Nova Iorque,20160901
+Joao Mendes,12345679,Berlim,20170101
+Joao Mendes,12345679,Nova Iorque,20160901
+Joao Mendes,12345679,Lisboa,20160831
+Carla Mendes,56785678,Lisboa,20160831
+Carla Mendes,56785678,Sydney,20180226
+Teresa Salazar,12345678,Dubai,20170303

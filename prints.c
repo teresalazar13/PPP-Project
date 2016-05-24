@@ -14,6 +14,7 @@ void print_list_clientes(list_clientes linked_list_clientes) {
 }
 
 void print_list_viagens(list_viagens linked_list_viagens) {
+  sort_data_recente_primeiro(linked_list_viagens);
   char *destino;
   printf("Destino: ");
   destino = prot_string();
@@ -44,15 +45,11 @@ void print_list_todas_viagens(list_viagens linked_list_viagens) {
 
 void print_viagens_adquiridas(list_clientes linked_list_clientes) {
   struct Cliente *cliente = procura_cliente(linked_list_clientes);
-  if (cliente == 0) { /*caso cliente nao exista*/
-    printf("Cliente nao encontrado.\n");
-    return;
-  }
   if (cliente->viagens_adquiridas->next == NULL) { /*caso cliente nao tenha viagens*/
     printf("Cliente nao possui viagens.\n");
     return;
   }
-  sort_data_recente_primeiro(cliente->viagens_adquiridas);
+  sort_data_antigo_primeiro(cliente->viagens_adquiridas);
   list_viagens viagens_adquiridas_cliente = cliente->viagens_adquiridas;
   list_viagens aux;
   aux = viagens_adquiridas_cliente->next;

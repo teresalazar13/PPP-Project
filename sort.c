@@ -3,8 +3,7 @@
 #include <string.h>
 #include "header.h"
 
-void sort_data_antigo_primeiro(list_viagens linked_list_viagens) {
-  int n = 0;
+void sort_data_recente_primeiro(list_viagens linked_list_viagens) {
   struct Viagem temp;
   list_viagens aux, aux2;
   aux = linked_list_viagens->next;
@@ -23,8 +22,7 @@ void sort_data_antigo_primeiro(list_viagens linked_list_viagens) {
   }
 }
 
-void sort_data_recente_primeiro(list_viagens linked_list_viagens) {
-  int n = 0;
+void sort_data_antigo_primeiro(list_viagens linked_list_viagens) {
   struct Viagem temp;
   list_viagens aux, aux2;
   aux = linked_list_viagens->next;

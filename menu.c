@@ -17,9 +17,12 @@ void menu() {
     printf("1) Adquirir uma viagem \n");
     printf("2) Cancelar uma viagem \n");
     printf("3) Cancelar pedido em fila de espera \n");
-    printf("4) Listar todas as viagens de um destino \n");
-    printf("5) Listar todas as viagens adquiridas de um cliente \n");
+    printf("4) Listar todas as viagens de um destino – as mais recentes primeiro \n");
+    printf("5) Listar todas as viagens adquiridas de um cliente – as mais antigas primeiro \n");
     printf("6) Listar todos os clientes \n");
+    printf("7) Inserir cliente \n");
+    printf("8) Inserir viagem \n");
+    printf("9) Listar todas as viagens \n");
     printf("[0 para sair] \n");
     opcao = prot_menu();
     switch (opcao) {
@@ -33,7 +36,6 @@ void menu() {
         cancelar_pedido_fila_de_espera(linked_list_viagens);
         break;
       case 4:
-        sort_data_antigo_primeiro(linked_list_viagens);
         print_list_viagens(linked_list_viagens);
         break;
       case 5:
@@ -48,9 +50,9 @@ void menu() {
       case 8:
         inserir_viagem(linked_list_viagens);
         break;
-      case 9: {
+      case 9:
         print_list_todas_viagens(linked_list_viagens);
-        break; }
+        break;
       case 0:
         return;
       default:

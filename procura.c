@@ -20,19 +20,22 @@ struct Cliente *procura_cliente(list_clientes linked_list_clientes) {
       aux = aux->next;
     }
   }
-  return 0;
+  printf("Cliente nao existente.\n");
+  return procura_cliente(linked_list_clientes);
 }
 
 struct Viagem *escolhe_viagem(list_viagens linked_list_viagens) {
   list_viagens aux;
   aux = linked_list_viagens->next;
   int i = 1;
+  int j = 1;
   while (aux != NULL) {
     printf("Viagem %d\n", i);
     printf("Destino: %s\n",aux->viagem.destino);
     printf("Data: %d/%d/%d\n",aux->viagem.data.dia, aux->viagem.data.mes, aux->viagem.data.ano );
     aux = aux->next;
     i++;
+    j++;
   }
   int opcao;
   printf("Numero da viagem que pretende: ");
@@ -43,10 +46,11 @@ struct Viagem *escolhe_viagem(list_viagens linked_list_viagens) {
     aux = aux->next;
     i++;
   }
-  if (i == opcao) {
+  if (i == opcao && opcao != j) {
     return &aux->viagem;
   }
   else {
-    return 0;
+    printf("Operacao invalida. Tente de novo.\n");
+    return escolhe_viagem(linked_list_viagens);
   }
 }

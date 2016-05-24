@@ -1,6 +1,7 @@
-coimbra,7,7,7,2
-lisboa,8,8,8,2
-yolo,9,9,9,2
-coimbra,8,6,1,1
-lisboa,8,6,1,1
-NY,31,3,2016,3
+Lisboa,7,6,2016,2
+Lisboa,31,8,2016,2
+Nova Iorque,1,9,2016,2
+Berlim,1,1,2017,3
+Lisboa,6,7,2016,2
+Dubai,3,3,2017,4
+Sydney,26,2,2018,5

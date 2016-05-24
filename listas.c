@@ -14,7 +14,7 @@ list_clientes create_list_clientes() {
 
 list_viagens create_list_viagens() {
   list_viagens ptr;
-  ptr = (list_viagens) malloc(sizeof(list_node2));
+  ptr = (list_viagens) malloc(sizeof(list_node_viagens));
   if (ptr != NULL) {
     ptr->next = NULL;
   }
@@ -44,7 +44,7 @@ struct Cliente inserir_dados_cliente() {
   nome = prot_string();
   strcpy(novoCliente.nome, nome);
   printf("Numero: ");
-  numero = prot_int();
+  numero = prot_int_bi();
   novoCliente.numero = numero;
   novoCliente.viagens_adquiridas = create_list_viagens();
   return novoCliente;
@@ -58,7 +58,7 @@ void inserir_viagem(list_viagens linked_list_viagens) {
   while (aux->next != NULL) {
     aux = aux->next;
   }
-  aux->next = (list_viagens) malloc(sizeof(list_node2));
+  aux->next = (list_viagens) malloc(sizeof(list_node_viagens));
   aux = aux->next;
   aux->viagem = novaViagem;
   aux->next = NULL;
@@ -67,19 +67,15 @@ void inserir_viagem(list_viagens linked_list_viagens) {
 struct Viagem inserir_dados_viagem() {
   struct Viagem novaViagem;
   struct Data data;
-  int dia, mes, ano, soma_data, numero_maximo;
+  int soma_data, numero_maximo;
   char *destino;
   printf("Destino: ");
   destino = prot_string();
   novaViagem.destino = malloc((MAX_CHAR + 1) * sizeof(char));
   strcpy(novaViagem.destino, destino);
-  printf("Data Dia/Mes/Ano: ");
-  scanf("%d/%d/%d",&dia, &mes, &ano );
-  data.dia = dia;
-  data.mes = mes;
-  data.ano = ano;
+  data = prot_data();
   novaViagem.data = data;
-  soma_data = ano * 10000 + mes * 100 + dia;
+  soma_data = data.ano * 10000 + data.mes * 100 + data.dia;
   novaViagem.soma_data = soma_data;
   printf("Numero maximo de clientes: ");
   numero_maximo = prot_int();

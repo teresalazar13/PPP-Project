@@ -46,7 +46,7 @@ void inserir_viagem_ficheiro(list_viagens linked_list_viagens, struct Viagem nov
   while (aux->next != NULL) {
     aux = aux->next;
   }
-  aux->next = (list_viagens) malloc(sizeof(list_node2));
+  aux->next = (list_viagens) malloc(sizeof(list_node_viagens));
   aux = aux->next;
   aux->viagem = novaViagem;
   aux->next = NULL;
@@ -113,7 +113,7 @@ void ficheiro_compras(list_viagens linked_list_viagens, list_clientes linked_lis
       }
     }
 
-    struct Viagem *viagem;
+    struct Viagem *viagem = NULL;
     list_viagens aux_viagens;
     aux_viagens = linked_list_viagens;
     while (aux_viagens->next != NULL) {
@@ -149,7 +149,7 @@ void inserir_viagem_em_cliente_ficheiro(list_viagens *viagens_adquiridas, struct
     while (aux->next != NULL) {
       aux = aux->next;
     }
-    aux->next = (list_viagens) malloc(sizeof(list_node2));
+    aux->next = (list_viagens) malloc(sizeof(list_node_viagens));
     aux = aux->next;
     aux->viagem = *novaViagem;
     aux->next = NULL;
@@ -199,6 +199,7 @@ void apaga_compra(struct Cliente cliente, struct Viagem viagem) {
   numero = (char*) malloc((MAX_CHAR + 1)*sizeof(char));
   destino = (char*) malloc((MAX_CHAR + 1)*sizeof(char));
   soma_data = (char*) malloc((MAX_CHAR + 1)*sizeof(char));
+  int check = 0; /*para so apagar uma viagem no caso de haverem 2 iguais*/
   while (fscanf(file, "%[^,\n]", nome) != EOF) {
     fscanf(file, "%[^,\n]", nome);
     fseek(file, 1, SEEK_CUR);
@@ -208,8 +209,11 @@ void apaga_compra(struct Cliente cliente, struct Viagem viagem) {
     fseek(file, 1, SEEK_CUR);
     fscanf(file, "%[^,\n]", soma_data);
     fseek(file, 1, SEEK_CUR);
-    if (strcmp(nome, nome_apagar) != 0 || atoi(numero) != numero_apagar || strcmp(destino, destino_apagar) != 0 || atoi(soma_data) != soma_data_apagar) {
+    if (check == 1 || strcmp(nome, nome_apagar) != 0 || atoi(numero) != numero_apagar || strcmp(destino, destino_apagar) != 0 || atoi(soma_data) != soma_data_apagar) {
       fprintf(file_temp, "%s,%s,%s,%s\n", nome,numero,destino,soma_data );
+    }
+    else {
+      check = 1;
     }
   }
   fclose(file);
