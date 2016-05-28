@@ -2,6 +2,6 @@ Lisboa,7,6,2016,2
 Lisboa,31,8,2016,2
 Nova Iorque,1,9,2016,2
 Berlim,1,1,2017,3
-Lisboa,6,7,2016,2
+Lisboa,6,7,2016,1
 Dubai,3,3,2017,4
 Sydney,26,2,2018,5

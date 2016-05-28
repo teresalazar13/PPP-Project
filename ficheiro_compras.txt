@@ -3,7 +3,8 @@ Teresa Salazar,12345678,Berlim,20170101
 Teresa Salazar,12345678,Nova Iorque,20160901
 Joao Mendes,12345679,Berlim,20170101
 Joao Mendes,12345679,Nova Iorque,20160901
-Joao Mendes,12345679,Lisboa,20160831
 Carla Mendes,56785678,Lisboa,20160831
 Carla Mendes,56785678,Sydney,20180226
 Teresa Salazar,12345678,Dubai,20170303
+Luis Silva,12341234,Lisboa,20160831
+Joao Mendes,12345679,Lisboa,20160831

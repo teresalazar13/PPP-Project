@@ -46,6 +46,8 @@ void print_list_todas_viagens(list_viagens linked_list_viagens);
 void sort_data_antigo_primeiro(list_viagens linked_list_viagens);
 void sort_data_recente_primeiro(list_viagens linked_list_viagens);
 void adquirir_viagem(list_viagens linked_list_viagens, list_clientes linked_list_clientes);
+int verifica_adquiriu_viagem(struct Cliente cliente, struct Viagem viagem);
+int verifica_espera_viagem(struct Cliente cliente, struct Viagem viagem);
 struct Cliente *procura_cliente(list_clientes linked_list_clientes);
 struct Viagem *escolhe_viagem(list_viagens linked_list_viagens);
 void cancelar_viagem(list_clientes linked_list_clientes, list_viagens linked_list_viagens);

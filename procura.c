@@ -6,12 +6,16 @@
 struct Cliente *procura_cliente(list_clientes linked_list_clientes) {
   char *nome;
   int numero;
+  list_clientes aux;
+  aux = linked_list_clientes;
+  if (aux->next == NULL) {
+    printf("Nao ha clientes disponiveis.\n");
+    return 0;
+  }
   printf("Nome do cliente: ");
   nome = prot_string();
   printf("Numero de cartao de cidadao: ");
   numero = prot_int();
-  list_clientes aux;
-  aux = linked_list_clientes;
   while (aux->next != NULL) {
     if (strcmp(nome, aux->next->cliente.nome) == 0 && aux->next->cliente.numero == numero) {
       return &aux->next->cliente;
@@ -27,6 +31,10 @@ struct Cliente *procura_cliente(list_clientes linked_list_clientes) {
 struct Viagem *escolhe_viagem(list_viagens linked_list_viagens) {
   list_viagens aux;
   aux = linked_list_viagens->next;
+  if (aux == NULL) {
+    printf("Nao ha viagens disponiveis.\n");
+    return 0;
+  }
   int i = 1;
   int j = 1;
   while (aux != NULL) {

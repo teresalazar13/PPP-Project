@@ -4,8 +4,13 @@
 #include "header.h"
 
 void cancelar_viagem(list_clientes linked_list_clientes, list_viagens linked_list_viagens) {
+  printf("Introduza dados do cliente.\n");
   struct Cliente *cliente = procura_cliente(linked_list_clientes);
+  printf("Selecione viagem que pretende cancelar.\n");
   struct Viagem *viagem = escolhe_viagem(cliente->viagens_adquiridas);
+  if (viagem == 0) {
+    return;
+  }
   apaga_compra(*cliente, *viagem);
   if (viagem->clientes_espera->next != NULL) { /*se houver clientes em espera, promover cliente no topo*/
     promover_cliente(viagem, linked_list_clientes);
@@ -19,7 +24,6 @@ void cancelar_viagem(list_clientes linked_list_clientes, list_viagens linked_lis
   while (aux != NULL) {
     if (strcmp(aux->viagem.destino, viagem->destino) == 0 && aux->viagem.soma_data == viagem->soma_data) {
       aux_anterior->next = aux->next;
-      free(aux->next);
       free(aux);
       break;
     }
@@ -34,7 +38,6 @@ void promover_cliente(struct Viagem *viagem, list_clientes linked_list_clientes)
   aux = viagem->clientes_espera->next;
   aux_anterior = viagem->clientes_espera;
   aux_anterior->next = aux->next;
-  free(aux->next);
   free(aux);
   list_viagens aux_viagens; /*adicionar viagem a cliente no topo da lista de espera*/
   aux_viagens = cliente_promovido.viagens_adquiridas;
@@ -60,15 +63,19 @@ void diminui_numero_clientes(list_viagens linked_list_viagens, struct Viagem via
 }
 
 void cancelar_pedido_fila_de_espera(list_viagens linked_list_viagens) {
+  printf("Selecione viagem da qual quer cancelar pedido em fila de espera.\n");
   struct Viagem *viagem = escolhe_viagem(linked_list_viagens);
+  printf("Introduza dados do cliente em fila de espera para a viagem.\n");
   struct Cliente *cliente = procura_cliente(viagem->clientes_espera);
+  if (cliente == 0) {
+    return;
+  }
   list_clientes aux, aux_anterior;
   aux = viagem->clientes_espera->next;
   aux_anterior = viagem->clientes_espera;
   while (aux != NULL) {
     if (strcmp(aux->cliente.nome, cliente->nome) == 0 && aux->cliente.numero == cliente->numero) {
       aux_anterior->next = aux->next;
-      free(aux->next);
       free(aux);
       break;
     }
